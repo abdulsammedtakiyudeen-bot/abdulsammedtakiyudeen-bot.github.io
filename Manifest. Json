@@ -1,0 +1,16 @@
+{
+  "name": "The Dark Stain on Today's Society",
+  "short_name": "Dark Stain",
+  "description": "An Islamic reflection on the moral challenges of modern society and the return to Allah.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": [
+    "books",
+    "education"
+  ]
+}
