@@ -1,16 +1,19 @@
 {
   "name": "The_Dark_Stain_on_Todays_Society_Laymans_Language.pdf",
-  "short_name": "The dark stain",
-  "description": "An Islamic reflection on the moral challenges of modern society and the return to Allah.",
+  "short_name": "Dark Stain",
+  "description": "A Wake-Up Call for a Lost Generation and a Return to Allah.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
-  "orientation": "portrait-primary",
-  "lang": "en",
-  "categories": [
-    "books",
-    "education"
+  "orientation": "portrait",
+  "background_color": "#0b0b0b",
+  "theme_color": "#0b0b0b",
+  "icons": [
+    {
+      "src": "cover.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
