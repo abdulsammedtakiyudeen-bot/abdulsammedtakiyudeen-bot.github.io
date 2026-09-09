@@ -9,6 +9,9 @@
 <meta property="og:description" content="A simple-language Islamic reflection on the moral challenges of modern society, the pressures facing young people and families, and the hope of returning to Allah.">
 <meta property="og:image" content="cover.png">
 <title>The Dark Stain on Today's Society | Abdul Sammed Takiyudeen</title>
+ <button id="installBtn" class="install-btn" style="display:none;">
+  📲 Install Dark Stain App
+ </button>
 <link rel="stylesheet" href="style.css">
  <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0b0b0b">
@@ -252,4 +255,41 @@
     });
   }
  </script>
+ <script>
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredPrompt = event;
+
+  installBtn.style.display = "block";
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) {
+    alert(
+      "To install Dark Stain:\n\n" +
+      "1. Tap the ⋮ menu in Chrome.\n" +
+      "2. Tap 'Install app'.\n" +
+      "3. Tap 'Install'."
+    );
+    return;
+  }
+
+  deferredPrompt.prompt();
+
+  const { outcome } = await deferredPrompt.userChoice;
+
+  console.log("Installation:", outcome);
+
+  deferredPrompt = null;
+  installBtn.style.display = "none";
+});
+
+window.addEventListener("appinstalled", () => {
+  console.log("Dark Stain installed!");
+  installBtn.style.display = "none";
+});
+                            </script>
 </body></html>
