@@ -1,4 +1,4 @@
-const CACHE_NAME = "dark-stain-v1";
+const CACHE_NAME = "dark-stain-v2";
 
 const FILES_TO_CACHE = [
   "./",
