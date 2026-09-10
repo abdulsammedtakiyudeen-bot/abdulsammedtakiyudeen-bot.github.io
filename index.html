@@ -1,397 +1,159 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="A simple-language Islamic reflection on the moral challenges of modern society, the pressures facing young people and families, and the hope of returning to Allah.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Dark Stain on Today's Society — an Islamic reflection on modern society, character, family, youth and returning to Allah.">
 <meta name="author" content="Abdul Sammed Takiyudeen">
 <meta name="theme-color" content="#12372a">
 <meta property="og:title" content="The Dark Stain on Today's Society">
-<meta property="og:description" content="A simple-language Islamic reflection on the moral challenges of modern society, the pressures facing young people and families, and the hope of returning to Allah.">
+<meta property="og:description" content="A Wake-Up Call for a Lost Generation">
 <meta property="og:image" content="cover.png">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
 <title>The Dark Stain on Today's Society | Abdul Sammed Takiyudeen</title>
- <button id="installBtn" class="install-btn" style="display:none;">
-  📲 Install Dark Stain App
- </button>
-<link rel="stylesheet" href="style.css">
- <link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#0b0b0b">
-<link rel="apple-touch-icon" href="./cover.png">
+<style>
+:root{--bg:#f5f7f5;--card:#fff;--text:#17211b;--muted:#68736c;--green:#12372a;--gold:#c59b45;--line:#e0e7e2;--shadow:0 10px 30px #12372a18}
+*{box-sizing:border-box;scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;line-height:1.7}body.dark{--bg:#0d1210;--card:#151d19;--text:#edf4ef;--muted:#aab8af;--line:#2a3730}
+.topbar{position:sticky;top:0;z-index:20;background:#12372af5;color:#fff;padding:12px 5%;display:flex;align-items:center;gap:20px;box-shadow:0 3px 20px #0002}.brand{font-weight:900;letter-spacing:1px;text-decoration:none;margin-right:auto}.nav{display:flex;gap:18px}.nav a{text-decoration:none;font-size:14px}.menu{display:none;background:none;border:0;color:#fff;font-size:25px}
+.container{width:min(1100px,92%);margin:auto}.hero{padding:60px 0;display:grid;grid-template-columns:350px 1fr;gap:50px;align-items:center}.hero img{width:100%;border-radius:20px;box-shadow:var(--shadow)}.eyebrow,.label{color:#1d5a43;font-weight:900;letter-spacing:1.5px;font-size:12px}.dark .eyebrow,.dark .label{color:#91c9ad}h1{font-size:clamp(42px,7vw,74px);line-height:1.02;margin:10px 0 20px}.lead{font-size:18px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}.btn,.tool{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:12px 17px;text-decoration:none;font-weight:800;cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:var(--card);color:var(--text);border:1px solid var(--line)}.install{background:var(--gold);color:#111}
+.section{padding:55px 0}.section h2{font-size:clamp(28px,4vw,43px);margin:5px 0 12px}.muted{color:var(--muted)}.quote{background:var(--green);color:#fff;padding:40px 8%;text-align:center;font-size:24px;font-style:italic}.quote-mark{font-size:60px;line-height:.5;color:#d8bd79}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card,.tool-card,.chapter-card,.reader{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}.tool-card h3{margin-top:0}.chapter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.chapter-card{text-decoration:none;display:flex;gap:14px}.chapter-card span{font-weight:900;color:var(--gold);font-size:20px}.chapter-card small{display:block;color:var(--muted)}
+.search{display:flex;gap:8px;margin:20px 0}.search input{flex:1;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text)}.reader{margin:16px 0;padding:28px}.reader p{font-size:17px}.reader blockquote{border-left:4px solid var(--gold);padding:8px 18px;background:#c59b4512;font-style:italic}.reader-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.reader-tools button{padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text)}
+.ad{min-height:105px;border:1px dashed #9aa79f;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;letter-spacing:1px;margin:24px 0}.reminder{background:linear-gradient(135deg,#12372a,#285e49);color:#fff;border-radius:20px;padding:28px}.count{text-align:center;font-size:50px;font-weight:900}.center{text-align:center}footer{background:#0b1712;color:#dce8e1;padding:30px 5%;display:flex;justify-content:space-between}.top{border:0;border-radius:50%;width:42px;height:42px}
+.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.open{display:flex}.modal-box{background:var(--card);color:var(--text);max-width:500px;width:100%;border-radius:20px;padding:25px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding:35px 0}.hero img{max-width:300px;display:block;margin:auto}.tools{grid-template-columns:1fr 1fr}.chapter-grid{grid-template-columns:1fr 1fr}.nav{display:none}.menu{display:block}}@media(max-width:520px){.tools,.chapter-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-<header class="topbar">
-<a class="brand" href="#home">THE DARK STAIN</a>
-<nav id="nav"><a href="#home">Home</a><a href="#chapters">Chapters</a><a href="#about">About</a></nav>
-<button class="menu" aria-label="Open menu">☰</button>
-</header>
+<div id="progress" style="position:fixed;top:0;left:0;height:4px;width:0;background:#c59b45;z-index:100"></div>
+<header class="topbar"><a class="brand" href="#home">THE DARK STAIN</a><nav class="nav"><a href="#home">Home</a><a href="#read">Read</a><a href="#features">Features</a><a href="#about">About</a></nav><button class="menu" id="menu">☰</button></header>
 
 <main>
-<section class="hero" id="home">
-<div class="hero-image-wrap"><img src="cover.png" alt="The Dark Stain on Today's Society book cover"></div>
-<div class="hero-copy">
-<p class="eyebrow">A WAKE-UP CALL FOR A LOST GENERATION</p>
-<h1>The Dark Stain<br><em>on Today's Society</em></h1>
-<p class="lead">A simple-language Islamic reflection on the moral challenges of modern society, the pressures facing young people and families, and the hope of returning to Allah.</p>
-<p class="author">By <strong>Abdul Sammed Takiyudeen</strong></p>
-<div class="actions"><a class="btn primary" href="#read">Read Online</a>
-<a class="btn secondary" href="The_Dark_Stain_on_Todays_Society_Laymans_Language.pdf" download>Download PDF</a></div>
-<p class="email">abdulsammedtakiyudeen@gmail.com</p>
-</div>
+<section class="hero container" id="home">
+<div><img src="cover.png" alt="The Dark Stain on Today's Society book cover"></div>
+<div><p class="eyebrow">A WAKE-UP CALL FOR A LOST GENERATION</p><h1>The Dark Stain<br><em>on Today's Society</em></h1><p class="lead">An Islamic reflection on modern society, character, family, youth, technology and the hope of returning to Allah.</p><p>By <strong>Abdul Sammed Takiyudeen</strong></p>
+<div class="actions"><a class="btn primary" href="#read">📖 Read Online</a><a class="btn secondary" href="The_Dark_Stain_on_Todays_Society_Laymans_Language.pdf" download>📥 Download PDF</a><button class="btn install" id="install">📲 Install App</button></div><p class="muted">abdulsammedtakiyudeen@gmail.com</p></div>
 </section>
 
-<section class="quote"><div class="quote-mark">“</div>
-<p>Before you point at the darkness around you, ask whether you are carrying a light.</p></section>
+<div class="container"><div class="ad">ADVERTISEMENT — AdSense banner space</div></div>
+<section class="quote"><div class="quote-mark">“</div><p>Before you point at the darkness around you, ask whether you are carrying a light.</p></section>
 
-<section class="intro section">
-<div class="section-label">WHY THIS BOOK?</div><h2>A mirror, not a finger.</h2>
-<p>Every generation has problems. This book asks difficult questions about the direction of society: What happens when people become more connected but less caring? What happens when popularity becomes more important than character? What happens when money becomes more important than honesty?</p>
-<p>These pages are written in simple language so the message can be understood by everyone. The goal is not only to make you read. It is to make you think, feel and act.</p>
-</section>
-
-<section class="section chapters-section" id="chapters">
-<div class="section-label">15 CHAPTERS</div><h2>Read the book</h2>
-<p class="muted">Choose a chapter, or search for a word or idea.</p>
-<div class="search-row"><input id="search" type="search" placeholder="Search the book..." aria-label="Search the book"><button id="clearSearch">Clear</button></div>
-<div class="chapter-grid" id="chapterGrid">
-      <a class="chapter-card" href="#chapter-1">
-        <span>01</span>
-        <div><strong>A Society Losing Its Way</strong>
-        <small>2.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-2">
-        <span>02</span>
-        <div><strong>When Wrong Becomes Normal</strong>
-        <small>3.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-3">
-        <span>03</span>
-        <div><strong>The Prison Of Social Media</strong>
-        <small>4.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-4">
-        <span>04</span>
-        <div><strong>When Money Becomes Everything</strong>
-        <small>5.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-5">
-        <span>05</span>
-        <div><strong>The Breaking Of The Family</strong>
-        <small>6.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-6">
-        <span>06</span>
-        <div><strong>The Lost Youth</strong>
-        <small>7.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-7">
-        <span>07</span>
-        <div><strong>When Knowledge Does Not Change The Heart</strong>
-        <small>8.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-8">
-        <span>08</span>
-        <div><strong>The Death Of Compassion</strong>
-        <small>9.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-9">
-        <span>09</span>
-        <div><strong>The Hidden Self</strong>
-        <small>10.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-10">
-        <span>10</span>
-        <div><strong>The Forgotten Hereafter</strong>
-        <small>11.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-11">
-        <span>11</span>
-        <div><strong>The Qur&#x27;An&#x27;S Warning And Hope</strong>
-        <small>12.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-12">
-        <span>12</span>
-        <div><strong>Lessons From The Prophet</strong>
-        <small>13.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-13">
-        <span>13</span>
-        <div><strong>Wisdom From The Scholars</strong>
-        <small>14.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-14">
-        <span>14</span>
-        <div><strong>Can Society Be Changed?</strong>
-        <small>15.</small></div>
-      </a>
-      <a class="chapter-card" href="#chapter-15">
-        <span>15</span>
-        <div><strong>Start With Yourself</strong>
-        <small></small></div>
-      </a></div>
-</section>
-
-<section class="reading section" id="read">
-<div class="section-label">THE BOOK</div>
-<div id="readingContent">
-    <article class="chapter" id="chapter-1">
-      <div class="chapter-number">CHAPTER 1</div>
-      <h2>A Society Losing Its Way</h2>
-      <p>2.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-2">
-      <div class="chapter-number">CHAPTER 2</div>
-      <h2>When Wrong Becomes Normal</h2>
-      <p>3.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-3">
-      <div class="chapter-number">CHAPTER 3</div>
-      <h2>The Prison Of Social Media</h2>
-      <p>4.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-4">
-      <div class="chapter-number">CHAPTER 4</div>
-      <h2>When Money Becomes Everything</h2>
-      <p>5.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-5">
-      <div class="chapter-number">CHAPTER 5</div>
-      <h2>The Breaking Of The Family</h2>
-      <p>6.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-6">
-      <div class="chapter-number">CHAPTER 6</div>
-      <h2>The Lost Youth</h2>
-      <p>7.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-7">
-      <div class="chapter-number">CHAPTER 7</div>
-      <h2>When Knowledge Does Not Change The Heart</h2>
-      <p>8.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-8">
-      <div class="chapter-number">CHAPTER 8</div>
-      <h2>The Death Of Compassion</h2>
-      <p>9.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-9">
-      <div class="chapter-number">CHAPTER 9</div>
-      <h2>The Hidden Self</h2>
-      <p>10.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-10">
-      <div class="chapter-number">CHAPTER 10</div>
-      <h2>The Forgotten Hereafter</h2>
-      <p>11.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-11">
-      <div class="chapter-number">CHAPTER 11</div>
-      <h2>The Qur&#x27;An&#x27;S Warning And Hope</h2>
-      <p>12.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-12">
-      <div class="chapter-number">CHAPTER 12</div>
-      <h2>Lessons From The Prophet</h2>
-      <p>13.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-13">
-      <div class="chapter-number">CHAPTER 13</div>
-      <h2>Wisdom From The Scholars</h2>
-      <p>14.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-14">
-      <div class="chapter-number">CHAPTER 14</div>
-      <h2>Can Society Be Changed?</h2>
-      <p>15.</p>
-      <div class="chapter-end">✦</div>
-    </article>
-    <article class="chapter" id="chapter-15">
-      <div class="chapter-number">CHAPTER 15</div>
-      <h2>Start With Yourself</h2>
-      
-      <div class="chapter-end">✦</div>
-    </article></div>
-</section>
-
-<section class="final-call section"><div class="call-card">
-<p class="section-label">A FINAL REMINDER</p><h2>The stain can be cleaned.</h2>
-<p>A heart can return. A family can heal. A young person can change. A community can rise. A society can awaken.</p>
-<p><strong>Do not merely read about the dark stain. Become part of the light that removes it.</strong></p>
-<a class="btn primary" href="The_Dark_Stain_on_Todays_Society_Laymans_Language.pdf" download>Get the Complete PDF</a>
+<section class="section container" id="features"><p class="label">EXPLORE</p><h2>More than a book</h2><p class="muted">Read, reflect, learn and test yourself.</p>
+<div class="tools">
+<div class="tool-card"><h3>🕌 Daily Reminder</h3><p id="reminder">Loading...</p><button class="btn primary" id="newReminder">New Reminder</button></div>
+<div class="tool-card"><h3>📿 Dhikr Counter</h3><div class="count" id="count">0</div><button class="btn primary" id="plus">+1 Dhikr</button> <button class="btn secondary" id="reset">Reset</button></div>
+<div class="tool-card"><h3>🔖 Continue Reading</h3><p id="continue">Start reading to save progress.</p><a class="btn primary" href="#read">Continue</a></div>
+<div class="tool-card"><h3>🌙 Appearance</h3><p>Choose your reading mode.</p><button class="btn primary" id="theme">Toggle Dark Mode</button></div>
 </div></section>
 
-<section class="about section" id="about">
-<div class="section-label">ABOUT THE AUTHOR</div><h2>Abdul Sammed Takiyudeen</h2>
-<p>This book is a reflective Islamic work intended to encourage self-examination, repentance, good character and positive reform.</p>
-<a class="email-link" href="mailto:abdulsammedtakiyudeen@gmail.com">abdulsammedtakiyudeen@gmail.com</a>
+<section class="section container"><p class="label">BOOK</p><h2>Find a chapter</h2><div class="search"><input id="search" type="search" placeholder="Search chapters or book text..."><button class="btn secondary" id="clear">Clear</button></div>
+<div class="chapter-grid" id="chapters">
+<a class="chapter-card" href="#chapter-1"><span>01</span><div><strong>A Society Losing Its Way</strong><small>Begin the reflection</small></div></a>
+<a class="chapter-card" href="#chapter-2"><span>02</span><div><strong>When Wrong Becomes Normal</strong><small>How habits shape the heart</small></div></a>
+<a class="chapter-card" href="#chapter-3"><span>03</span><div><strong>The Pressure To Look Perfect</strong><small>Social media and identity</small></div></a>
+<a class="chapter-card" href="#chapter-4"><span>04</span><div><strong>When Money Becomes Everything</strong><small>Wealth and contentment</small></div></a>
+<a class="chapter-card" href="#chapter-5"><span>05</span><div><strong>The Family Is Getting Quieter</strong><small>Responsibility begins at home</small></div></a>
+<a class="chapter-card" href="#chapter-6"><span>06</span><div><strong>A Message To Young People</strong><small>Character and choices</small></div></a>
+<a class="chapter-card" href="#chapter-7"><span>07</span><div><strong>Information And Wisdom</strong><small>Knowledge should change us</small></div></a>
+<a class="chapter-card" href="#chapter-8"><span>08</span><div><strong>The Darkness Can Be Broken</strong><small>Hope and responsibility</small></div></a>
+<a class="chapter-card" href="#chapter-9"><span>09</span><div><strong>The Mirror Is For All Of Us</strong><small>Self-examination</small></div></a>
+<a class="chapter-card" href="#chapter-10"><span>10</span><div><strong>The Forgotten Hereafter</strong><small>Remembering what lasts</small></div></a>
+<a class="chapter-card" href="#chapter-11"><span>11</span><div><strong>The Qur'an's Warning And Hope</strong><small>Warnings and mercy</small></div></a>
+<a class="chapter-card" href="#chapter-12"><span>12</span><div><strong>Lessons From The Prophet</strong><small>Character and responsibility</small></div></a>
+<a class="chapter-card" href="#chapter-13"><span>13</span><div><strong>Wisdom From The Scholars</strong><small>Knowledge and action</small></div></a>
+<a class="chapter-card" href="#chapter-14"><span>14</span><div><strong>Can Society Be Changed?</strong><small>Change starts within</small></div></a>
+<a class="chapter-card" href="#chapter-15"><span>15</span><div><strong>Start With Yourself</strong><small>Be a light</small></div></a>
+</div></section>
+
+<section class="section container" id="read"><p class="label">READ ONLINE</p><h2>The Book</h2><div class="reader-tools"><button id="down">A−</button><button id="up">A+</button><button id="bookmark">🔖 Bookmark</button><button id="share">📤 Share</button></div>
+
+<article class="reader chapter" id="chapter-1"><h3>Chapter 1 — A Society Losing Its Way</h3><p>We live in a world that looks more advanced than ever. We have fast phones, the internet, modern buildings, better ways to travel, and many ways to learn. We can speak to someone far away in seconds.</p><p>But there is a question we must ask: Are our hearts becoming better as our technology becomes better?</p><p>Sadly, many people are struggling inside. Some have money but no peace. Some have many friends online but feel lonely. Some can speak to thousands of people but have nobody they can truly trust. We have learned how to connect phones, but sometimes we have forgotten how to connect hearts.</p><p>This does not mean everything in today's society is bad. There are many good people doing good things. People help the poor, care for their families, teach others, give charity, and stand against injustice. The problem is that bad habits can slowly become normal.</p><blockquote>“Corruption has appeared throughout the land and sea because of what people’s hands have earned...” — Qur'an 30:41</blockquote><p>A society does not become lost in one day. It can happen little by little. When people stop caring about right and wrong, the darkness grows.</p></article>
+
+<article class="reader chapter" id="chapter-2"><h3>Chapter 2 — When Wrong Becomes Normal</h3><p>One of the biggest problems in society is that some wrong things no longer make people feel ashamed.</p><p>A person tells a lie and says, “It is only a small lie.” Someone talks badly about another person and calls it “just a joke.” Someone breaks a promise and says, “Everybody does it.” Someone cheats in business and says, “I have to survive.”</p><p>When wrong is repeated again and again, the heart can become used to it.</p><blockquote>“The signs of a hypocrite are three...” — Prophet Muhammad ﷺ, Sahih al-Bukhari 33</blockquote><p>A small hole can sink a boat if it is ignored. In the same way, small wrongs should not be treated as harmless when they become habits.</p></article>
+
+<article class="reader chapter" id="chapter-3"><h3>Chapter 3 — The Pressure To Look Perfect</h3><p>Social media has changed the way people see themselves and others. We see pictures of people smiling, travelling, wearing nice clothes, eating good food, and enjoying life. But a picture does not show everything.</p><p>Someone may look happy online while having a very difficult day. Someone may look rich while struggling with money. Someone may receive many likes but still feel empty.</p><p>The danger comes when we start measuring our value by the number of likes, comments, followers, or views we receive.</p><p><strong>Ask yourself:</strong> Who am I when nobody is watching? Do I tell the truth when lying would help me? Do I help people when nobody will praise me? Do I pray because I love Allah, or only because people are watching?</p><blockquote>“Actions are judged by intentions.” — Prophet Muhammad ﷺ, reported in Sahih al-Bukhari and Sahih Muslim</blockquote><p>Technology is not the enemy. It can be used for learning, business, communication, and spreading good messages. But we must control our phones instead of allowing our phones to control us.</p></article>
+
+<article class="reader chapter" id="chapter-4"><h3>Chapter 4 — When Money Becomes Everything</h3><p>Money is useful. We need it for food, education, shelter, transport, and many other things. Islam does not tell us to hate wealth. The problem starts when money becomes the main purpose of life.</p><p>Some people begin to think that a person is important because of the car he drives, the clothes he wears, the house he lives in, or the amount of money in his account. But what happens when those things are gone?</p><p>A person's true value cannot be measured by his possessions. Character matters. Honesty matters. Kindness matters. Faith matters.</p><blockquote>“The world is a prison for the believer and Paradise for the disbeliever.” — Sahih Muslim 2956</blockquote><p>We should work hard and earn what is lawful, but we should never allow money to become our master.</p></article>
+
+<article class="reader chapter" id="chapter-5"><h3>Chapter 5 — The Family Is Getting Quieter</h3><p>A strong society begins with strong families. A child first learns how to speak, respect, forgive, and care for others at home.</p><p>But today, many families are becoming distant. People may sit in the same room while everyone is looking at a different screen. A parent may be busy all day. A child may spend hours online looking for advice from strangers.</p><p>Sometimes the problem is not a lack of love. It is a lack of time.</p><p>Put the phone down and talk. Eat together when you can. Ask your parents how they are. Listen to your children. Visit relatives. Check on your neighbours. Pray together. These things may look small, but small acts can repair big problems.</p><blockquote>“Each of you is a shepherd and each of you is responsible for his flock.” — Prophet Muhammad ﷺ, Sahih al-Bukhari and Sahih Muslim</blockquote></article>
+
+<article class="reader chapter" id="chapter-6"><h3>Chapter 6 — A Message To Young People</h3><p>Young people are important. You are not only the future; you are part of today's society.</p><p>Do not let the internet decide your value. Do not believe that you must copy everyone around you to be accepted. Be proud of good character.</p><p>Study hard. Learn useful skills. Respect your parents and teachers. Choose good friends. Protect your prayers. Speak carefully. Do not make another person's weakness a joke. Do not follow every trend just because it is popular.</p><blockquote>“The strong believer is better and more beloved to Allah than the weak believer, while there is good in both.” — Prophet Muhammad ﷺ, Sahih Muslim</blockquote></article>
+
+<article class="reader chapter" id="chapter-7"><h3>Chapter 7 — Information And Wisdom</h3><p>Today, information is everywhere. With a phone, a person can learn about almost anything. But knowing information is not the same as having wisdom.</p><p>A person can know many verses but still treat people badly. Someone can watch hundreds of lectures but refuse to change a bad habit. Someone can win an argument but still have a proud heart.</p><p>Real knowledge should make us better. Ask, “What has my knowledge changed in me?” Has it made me more honest, patient, respectful to my parents, helpful to the poor, careful with my tongue, or regular in prayer?</p></article>
+
+<article class="reader chapter" id="chapter-8"><h3>Chapter 8 — The Darkness Can Be Broken</h3><p>After reading about the problems in society, someone may feel hopeless. But Islam does not teach us to give up.</p><blockquote>“Indeed, Allah will not change the condition of a people until they change what is in themselves.” — Qur'an 13:11</blockquote><p>We may not be able to change the whole world today. But we can change ourselves today.</p><p>Stop one lie. Return one trust. Say sorry to someone. Forgive someone. Pray a prayer you have been neglecting. Open the Qur'an. Give charity. Help a neighbour. Leave a bad habit. Speak kindly.</p><p>A room becomes bright when one lamp is switched on. In the same way, one good person can become a light in a dark place.</p></article>
+
+<article class="reader chapter" id="chapter-9"><h3>Chapter 9 — The Mirror Is For All Of Us</h3><p>This book is not written to say that everyone else is the problem. It is a mirror for all of us.</p><p>We complain about people who lie, but have we always told the truth? We complain about disrespect, but how do we speak to our parents? We complain about young people being lost, but what example are we giving them? We complain about society, but what are we adding to it?</p><p>Before pointing a finger at another person, look at your own heart.</p><p>Ask yourself: What bad habit have I started calling normal? Who have I hurt? Who do I need to forgive? Who deserves an apology from me? How is my relationship with Allah? What good thing have I been delaying?</p></article>
+
+<article class="reader chapter" id="chapter-10"><h3>Chapter 10 — The Forgotten Hereafter</h3><p>The world is temporary. We may enjoy good things, but we should never forget that our real home is with Allah in the Hereafter.</p><p>Money can buy a bed, but it cannot always buy peaceful sleep. It can buy food, but it cannot buy a thankful heart. It can buy a house, but it cannot always create a loving family.</p><p>Work hard and earn what is lawful, but never allow money to become your master.</p></article>
+
+<article class="reader chapter" id="chapter-11"><h3>Chapter 11 — The Qur'an's Warning And Hope</h3><p>The Qur'an warns about corruption and reminds us that change begins with what people change within themselves.</p><blockquote>Qur'an 30:41 reminds us about corruption on land and sea. Qur'an 13:11 reminds us that change begins within.</blockquote><p>These warnings are also calls to return, repent, repair and do good.</p></article>
+
+<article class="reader chapter" id="chapter-12"><h3>Chapter 12 — Lessons From The Prophet</h3><p>The Prophet Muhammad ﷺ taught honesty, keeping trusts, good intentions, responsibility and strength joined with goodness.</p><p>Faith should appear in our character, choices, treatment of others and responsibility.</p></article>
+
+<article class="reader chapter" id="chapter-13"><h3>Chapter 13 — Wisdom From The Scholars</h3><p>The great scholars of Islam reminded people that knowledge should lead to good action. Information alone is not enough.</p><p>Ask not only, “What do I know?” Ask, “What has my knowledge changed in me?”</p></article>
+
+<article class="reader chapter" id="chapter-14"><h3>Chapter 14 — Can Society Be Changed?</h3><p>We may not be able to change the whole world at once. Start with your room, your phone, your speech, your prayer, your friends and your choices.</p><p>If people become better, families can become better. If families become better, communities can become better. If communities become better, society can become better.</p></article>
+
+<article class="reader chapter" id="chapter-15"><h3>Chapter 15 — Start With Yourself</h3><p>The dark stain on today's society is real, but it does not have to be permanent. The cleaning can begin today. And it can begin with you.</p><p><strong>Be honest when others lie. Be kind when others are cruel. Forgive when revenge is easy. Pray when the world is distracting you. Help when nobody is watching.</strong></p></article>
+
+<div class="ad">ADVERTISEMENT — AdSense banner space</div>
 </section>
+
+<section class="section container"><p class="label">TEST YOURSELF</p><h2>🧠 Islamic Reflection Quiz</h2><div class="card" id="quiz"></div></section>
+
+<section class="section container"><div class="reminder"><p class="label">STAY CONNECTED</p><h2>🔔 Notifications</h2><p>Enable notifications if your browser supports them, then test one on this device.</p><button class="btn install" id="notify">Enable Notifications</button><button class="btn secondary" id="test" style="display:none">Test Notification</button><p id="status"></p></div></section>
+
+<section class="section container" id="about"><p class="label">ABOUT THE AUTHOR</p><h2>Abdul Sammed Takiyudeen</h2><p>This book is a reflective Islamic work intended to encourage self-examination, repentance, good character and positive reform.</p><a class="btn secondary" href="mailto:abdulsammedtakiyudeen@gmail.com">✉️ Contact Author</a></section>
 </main>
 
-<footer><div><strong>The Dark Stain on Today's Society</strong><span>© Abdul Sammed Takiyudeen</span></div>
-<button id="topBtn" aria-label="Back to top">↑</button></footer>
-<script src="script.js"></script>
- <script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("./service-worker.js")
-        .then(() => {
-          console.log("Service Worker registered successfully.");
-        })
-        .catch(error => {
-          console.error("Service Worker registration failed:", error);
-        });
-    });
-  }
- </script>
- <section class="notification-box">
-  <h3>🔔 Stay Updated</h3>
-  <p>Get notifications from The Dark Stain on Today's Society.</p>
+<footer><div><strong>The Dark Stain on Today's Society</strong><br>© Abdul Sammed Takiyudeen</div><button class="top" id="top">↑</button></footer>
 
-  <button id="enableNotifications" class="install-btn">
-    🔔 Enable Notifications
-  </button>
+<div class="modal" id="modal"><div class="modal-box"><h2>📲 Install Dark Stain</h2><p>If installation is supported, the browser will show the install prompt. If not, open the browser menu and choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.</p><button class="btn primary" id="close">Close</button></div></div>
 
-  <button id="testNotification" class="install-btn" style="display:none;">
-    🔔 Test Notification
-  </button>
+<script>
+let deferredPrompt=null;
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e});
+document.getElementById("install").onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else document.getElementById("modal").classList.add("open")};
+document.getElementById("close").onclick=()=>document.getElementById("modal").classList.remove("open");
 
-  <p id="notificationStatus"></p>
- </section>
- <script>
-let deferredPrompt;
-const installBtn = document.getElementById("installBtn");
+const body=document.body,theme=document.getElementById("theme");
+if(localStorage.darkStainTheme==="dark")body.classList.add("dark");
+theme.onclick=()=>{body.classList.toggle("dark");localStorage.darkStainTheme=body.classList.contains("dark")?"dark":"light"};
 
-window.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-  deferredPrompt = event;
+let count=+(localStorage.darkStainDhikr||0);const countEl=document.getElementById("count");const draw=()=>countEl.textContent=count;draw();
+document.getElementById("plus").onclick=()=>{count++;localStorage.darkStainDhikr=count;draw()};
+document.getElementById("reset").onclick=()=>{count=0;localStorage.darkStainDhikr=0;draw()};
 
-  installBtn.style.display = "block";
-});
+const reminders=["Remember Allah often. A heart needs remembrance.","Do not underestimate a small good deed.","Speak kindly, even when nobody is watching.","Your character is part of your worship.","Do not let your phone control your attention.","Return to Allah whenever you fall short.","Good change can begin with one sincere decision."];
+function setReminder(){document.getElementById("reminder").textContent=reminders[new Date().getDate()%reminders.length]}setReminder();
+document.getElementById("newReminder").onclick=()=>document.getElementById("reminder").textContent=reminders[Math.floor(Math.random()*reminders.length)];
 
-installBtn.addEventListener("click", async () => {
-  if (!deferredPrompt) {
-    alert(
-      "To install Dark Stain:\n\n" +
-      "1. Tap the ⋮ menu in Chrome.\n" +
-      "2. Tap 'Install app'.\n" +
-      "3. Tap 'Install'."
-    );
-    return;
-  }
+const chapters=[...document.querySelectorAll(".chapter")];
+function progress(){let d=document.documentElement;document.getElementById("progress").style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+"%";let best=0;chapters.forEach((c,i)=>{if(c.getBoundingClientRect().top<innerHeight*.55)best=i});localStorage.darkStainChapter=best+1;document.getElementById("continue").textContent="Continue from Chapter "+(best+1)}
+addEventListener("scroll",progress);progress();
 
-  deferredPrompt.prompt();
+let fs=17;document.getElementById("up").onclick=()=>{fs=Math.min(24,fs+1);chapters.forEach(x=>x.style.fontSize=fs+"px")};document.getElementById("down").onclick=()=>{fs=Math.max(14,fs-1);chapters.forEach(x=>x.style.fontSize=fs+"px")};
+document.getElementById("bookmark").onclick=()=>{localStorage.darkStainBookmark=location.hash||"#read";document.getElementById("bookmark").textContent="🔖 Bookmark saved"};
+document.getElementById("share").onclick=async()=>{let d={title:"The Dark Stain on Today's Society",text:"Read The Dark Stain on Today's Society by Abdul Sammed Takiyudeen.",url:location.href};if(navigator.share)await navigator.share(d);else if(navigator.clipboard)await navigator.clipboard.writeText(location.href)};
 
-  const { outcome } = await deferredPrompt.userChoice;
+const search=document.getElementById("search"),cards=[...document.querySelectorAll(".chapter-card")];
+search.oninput=()=>{let q=search.value.toLowerCase().trim();cards.forEach((c,i)=>c.style.display=(!q||c.textContent.toLowerCase().includes(q)||chapters[i].textContent.toLowerCase().includes(q))?"flex":"none")};
+document.getElementById("clear").onclick=()=>{search.value="";search.oninput()};
 
-  console.log("Installation:", outcome);
+const qs=[
+["According to the book, what should we ask before blaming society?",["What are we adding to it?","Who is most popular?","Who has the most money?"],0],
+["What does Qur'an 13:11 remind us about?",["Change begins within people.","Technology is evil.","Money solves society's problems."],0],
+["How should technology be treated?",["As the enemy.","As a tool that should be controlled and used well.","As something with no benefit."],1],
+["What should real knowledge lead to?",["Pride.","Good action and better character.","Popularity."],1]
+];
+let qi=0,score=0;function quiz(){let q=qs[qi];document.getElementById("quiz").innerHTML="<h3>"+(qi+1)+"/"+qs.length+". "+q[0]+"</h3>"+q[1].map((a,i)=>'<button class="quiz-option tool" style="display:block;width:100%;text-align:left;margin:8px 0">'+a+"</button>").join("");document.querySelectorAll(".quiz-option").forEach((b,i)=>b.onclick=()=>{if(i===q[2])score++;qi++;if(qi<qs.length)quiz();else document.getElementById("quiz").innerHTML="<h3>Quiz complete 🎉</h3><p>Your score: "+score+"/"+qs.length+"</p><button class='btn primary' id='again'>Try Again</button>";let a=document.getElementById("again");if(a)a.onclick=()=>{qi=0;score=0;quiz()}})}quiz();
 
-  deferredPrompt = null;
-  installBtn.style.display = "none";
-});
-
-window.addEventListener("appinstalled", () => {
-  console.log("Dark Stain installed!");
-  installBtn.style.display = "none";
-});
-                            </script>
- <script>
-const enableNotifications =
-  document.getElementById("enableNotifications");
-
-const testNotification =
-  document.getElementById("testNotification");
-
-const notificationStatus =
-  document.getElementById("notificationStatus");
-
-async function enableNotificationsNow() {
-  if (!("Notification" in window)) {
-    notificationStatus.textContent =
-      "Notifications are not supported on this browser.";
-    return;
-  }
-
-  if (!("serviceWorker" in navigator)) {
-    notificationStatus.textContent =
-      "This browser does not support service workers.";
-    return;
-  }
-
-  try {
-    const permission = await Notification.requestPermission();
-
-    if (permission === "granted") {
-      notificationStatus.textContent =
-        "✅ Notifications are enabled!";
-
-      enableNotifications.style.display = "none";
-      testNotification.style.display = "block";
-    } else if (permission === "denied") {
-      notificationStatus.textContent =
-        "Notifications were blocked. You can enable them in your browser settings.";
-    } else {
-      notificationStatus.textContent =
-        "Notification permission was not granted.";
-    }
-  } catch (error) {
-    console.error(error);
-    notificationStatus.textContent =
-      "Something went wrong while enabling notifications.";
-  }
-}
-
-enableNotifications.addEventListener(
-  "click",
-  enableNotificationsNow
-);
-
-testNotification.addEventListener("click", async () => {
-  if (Notification.permission !== "granted") {
-    notificationStatus.textContent =
-      "Please enable notifications first.";
-    return;
-  }
-
-  const registration =
-    await navigator.serviceWorker.ready;
-
-  registration.showNotification(
-    "The Dark Stain 📖",
-    {
-      body: "Welcome! Notifications are working successfully.",
-      icon: "./icon-192.png",
-      badge: "./icon-192.png",
-      tag: "dark-stain-test",
-      data: {
-        url: "./"
-      }
-    }
-  );
-});
-
-function updateNotificationButton() {
-  if (!("Notification" in window)) return;
-
-  if (Notification.permission === "granted") {
-    enableNotifications.style.display = "none";
-    testNotification.style.display = "block";
-    notificationStatus.textContent =
-      "✅ Notifications are already enabled.";
-  }
-}
-
-updateNotificationButton();
- </script>
-</body></html>
+document.getElementById("notify").onclick=async()=>{if(!("Notification"in window)){status.textContent="Notifications are not supported in this browser.";return}let p=await Notification.requestPermission();if(p==="granted"){status.textContent="✅ Notifications enabled.";notify.style.display="none";test.style.display="inline-flex"}else status.textContent="Permission was not granted."};
+document.getElementById("test").onclick=async()=>{let r=await navigator.serviceWorker.ready;r.showNotification("The Dark Stain 📖",{body:"Notifications are working successfully.",icon:"./icon-192.png",badge:"./icon-192.png"})};
+document.getElementById("top").onclick=()=>scrollTo({top:0,behavior:"smooth"});
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(console.error));
+</script>
+</body>
+</html>
