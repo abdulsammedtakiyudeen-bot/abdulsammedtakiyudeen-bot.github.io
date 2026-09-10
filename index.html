@@ -255,6 +255,20 @@
     });
   }
  </script>
+ <section class="notification-box">
+  <h3>🔔 Stay Updated</h3>
+  <p>Get notifications from The Dark Stain on Today's Society.</p>
+
+  <button id="enableNotifications" class="install-btn">
+    🔔 Enable Notifications
+  </button>
+
+  <button id="testNotification" class="install-btn" style="display:none;">
+    🔔 Test Notification
+  </button>
+
+  <p id="notificationStatus"></p>
+ </section>
  <script>
 let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
@@ -292,4 +306,92 @@ window.addEventListener("appinstalled", () => {
   installBtn.style.display = "none";
 });
                             </script>
+ <script>
+const enableNotifications =
+  document.getElementById("enableNotifications");
+
+const testNotification =
+  document.getElementById("testNotification");
+
+const notificationStatus =
+  document.getElementById("notificationStatus");
+
+async function enableNotificationsNow() {
+  if (!("Notification" in window)) {
+    notificationStatus.textContent =
+      "Notifications are not supported on this browser.";
+    return;
+  }
+
+  if (!("serviceWorker" in navigator)) {
+    notificationStatus.textContent =
+      "This browser does not support service workers.";
+    return;
+  }
+
+  try {
+    const permission = await Notification.requestPermission();
+
+    if (permission === "granted") {
+      notificationStatus.textContent =
+        "✅ Notifications are enabled!";
+
+      enableNotifications.style.display = "none";
+      testNotification.style.display = "block";
+    } else if (permission === "denied") {
+      notificationStatus.textContent =
+        "Notifications were blocked. You can enable them in your browser settings.";
+    } else {
+      notificationStatus.textContent =
+        "Notification permission was not granted.";
+    }
+  } catch (error) {
+    console.error(error);
+    notificationStatus.textContent =
+      "Something went wrong while enabling notifications.";
+  }
+}
+
+enableNotifications.addEventListener(
+  "click",
+  enableNotificationsNow
+);
+
+testNotification.addEventListener("click", async () => {
+  if (Notification.permission !== "granted") {
+    notificationStatus.textContent =
+      "Please enable notifications first.";
+    return;
+  }
+
+  const registration =
+    await navigator.serviceWorker.ready;
+
+  registration.showNotification(
+    "The Dark Stain 📖",
+    {
+      body: "Welcome! Notifications are working successfully.",
+      icon: "./icon-192.png",
+      badge: "./icon-192.png",
+      tag: "dark-stain-test",
+      data: {
+        url: "./"
+      }
+    }
+  );
+});
+
+function updateNotificationButton() {
+  if (!("Notification" in window)) return;
+
+  if (Notification.permission === "granted") {
+    enableNotifications.style.display = "none";
+    testNotification.style.display = "block";
+    notificationStatus.textContent =
+      "✅ Notifications are already enabled.";
+  }
+}
+
+updateNotificationButton();
+ </script>
 </body></html>
