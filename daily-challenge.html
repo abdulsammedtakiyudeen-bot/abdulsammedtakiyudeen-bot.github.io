@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Today's Islamic Challenge</title>
+
+  <meta name="description"
+        content="A daily Islamic challenge from The Dark Stain on Today's Society. Test your knowledge, build your streak and learn something beneficial every day.">
+
+  <meta name="author" content="Abdul Sammed Takiyudeen">
+
+  <meta name="theme-color" content="#12372a">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7f5;
+      color: #17201b;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: #12372a;
+      color: white;
+      padding: 24px 18px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .header p {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .container {
+      width: min(700px, 94%);
+      margin: 25px auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .top-info {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-weight: bold;
+      color: #12372a;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 9px;
+      background: #e2e8e4;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: #12372a;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 12px;
+    }
+
+    .answer {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #dce4df;
+      border-radius: 12px;
+      background: white;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer:hover {
+      border-color: #12372a;
+      background: #f3f8f5;
+    }
+
+    .answer.correct {
+      background: #dff5e5;
+      border-color: #238b45;
+    }
+
+    .answer.wrong {
+      background: #ffe3e3;
+      border-color: #c62828;
+    }
+
+    .answer:disabled {
+      cursor: default;
+    }
+
+    .feedback {
+      margin-top: 18px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #f1f5f2;
+      line-height: 1.5;
+      display: none;
+    }
+
+    .next-btn,
+    .restart-btn,
+    .back-btn {
+      border: none;
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .next-btn {
+      background: #12372a;
+      color: white;
+      margin-top: 18px;
+      display: none;
+      width: 100%;
+    }
+
+    .restart-btn {
+      background: #12372a;
+      color: white;
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    .back-btn {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      background: white;
+      color: #12372a;
+      border: 2px solid #12372a;
+      margin-top: 15px;
+    }
+
+    .result {
+      text-align: center;
+      display: none;
+    }
+
+    .result h2 {
+      font-size: 28px;
+      color: #12372a;
+    }
+
+    .score {
+      font-size: 45px;
+      font-weight: bold;
+      color: #12372a;
+      margin: 15px 0;
+    }
+
+    .streak {
+      background: #fff5d6;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .small-note {
+      text-align: center;
+      color: #68736d;
+      font-size: 13px;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 500px) {
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .question {
+        font-size: 19px;
+      }
+
+      .card {
+        padding: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>🌙 Today's Challenge</h1>
+    <p>Learn something beneficial every day.</p>
+  </header>
+
+  <main class="container">
+
+    <section class="card" id="quizCard">
+
+      <div class="top-info">
+        <span id="questionNumber">Question 1 of 5</span>
+        <span id="scoreText">Score: 0</span>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <div class="question" id="question">
+        Loading question...
+      </div>
+
+      <div class="answers" id="answers"></div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+        Next Question →
+      </button>
+
+    </section>
+
+
+    <section class="card result" id="resultCard">
+
+      <h2>🎉 Challenge Complete!</h2>
+
+      <p>Your score:</p>
+
+      <div class="score" id="finalScore">
+        0 / 5
+      </div>
+
+      <div class="streak" id="streakText">
+        🔥 Streak: 0 days
+      </div>
+
+      <p id="resultMessage"></p>
+
+      <button class="restart-btn" onclick="restartChallenge()">
+        Try Again
+      </button>
+
+    </section>
+
+
+    <!-- Direct link back to the homepage -->
+    <a class="back-btn" href="./index.html">
+      ← Back to The Dark Stain
+    </a>
+
+    <div class="small-note">
+      Your progress and streak are stored only on this device.
+      No account is required.
+    </div>
+
+  </main>
+
+
+<script>
+
+  /* =========================
+     QUESTION BANK
+  ========================= */
+
+  const questionBank = [
+
+    {
+      q: "Which book do Muslims believe is the word of Allah?",
+      a: [
+        "The Qur’an",
+        "A history book",
+        "A poetry book",
+        "A biography"
+      ],
+      c: 0,
+      e: "The Qur’an is the revealed Book of Allah and the primary source of guidance for Muslims."
+    },
+
+    {
+      q: "What does Sabr mean?",
+      a: [
+        "Wealth",
+        "Patience",
+        "Travel",
+        "Sleep"
+      ],
+      c: 1,
+      e: "Sabr means patience, perseverance and remaining steadfast in obedience to Allah."
+    },
+
+    {
+      q: "Which of these is one of the five daily prayers?",
+      a: [
+        "Eid",
+        "Janazah",
+        "Fajr",
+        "Tarawih"
+      ],
+      c: 2,
+      e: "Fajr is one of the five obligatory daily prayers."
+    },
+
+    {
+      q: "What does Shukr mean?",
+      a: [
+        "Gratitude",
+        "Anger",
+        "Fear",
+        "Forgetfulness"
+      ],
+      c: 0,
+      e: "Shukr means gratitude or thankfulness, especially gratitude to Allah."
+    },
+
+    {
+      q: "Where should Muslims turn for guidance?",
+      a: [
+        "Social media trends",
+        "Rumours",
+        "Random guesses",
+        "The Qur’an and authentic Sunnah"
+      ],
+      c: 3,
+      e: "The Qur’an and authentic Sunnah are foundational sources of Islamic guidance."
+    },
+
+    {
+      q: "Which quality is encouraged in Islam?",
+      a: [
+        "Arrogance",
+        "Honesty",
+        "Cheating",
+        "Cruelty"
+      ],
+      c: 1,
+      e: "Honesty is an important Islamic character trait."
+    },
+
+    {
+      q: "What is one way to improve society?",
+      a: [
+        "Spread rumours",
+        "Ignore wrongdoing",
+        "Start by improving yourself",
+        "Treat people badly"
+      ],
+      c: 2,
+      e: "Positive change can begin with improving our own character and actions."
+    },
+
+    {
+      q: "How many obligatory prayers are performed each day?",
+      a: [
+        "Three",
+        "Four",
+        "Five",
+        "Seven"
+      ],
+      c: 2,
+      e: "Muslims are required to perform five obligatory prayers each day."
+    },
+
+    {
+      q: "What does Tawbah mean?",
+      a: [
+        "Repentance",
+        "Travel",
+        "Competition",
+        "Silence"
+      ],
+      c: 0,
+      e: "Tawbah means turning back to Allah in repentance."
+    },
+
+    {
+      q: "Which month contains fasting that is obligatory for Muslims?",
+      a: [
+        "Muharram",
+        "Ramadan",
+        "Rajab",
+        "Safar"
+      ],
+      c: 1,
+      e: "Fasting during Ramadan is one of the Five Pillars of Islam."
+    },
+
+    {
+      q: "What does Dua mean?",
+      a: [
+        "Supplication",
+        "Business",
+        "Exercise",
+        "Sleep"
+      ],
+      c: 0,
+      e: "Dua means supplication or calling upon Allah."
+    },
+
+    {
+      q: "Which action can strengthen a person's character?",
+      a: [
+        "Lying",
+        "Keeping promises",
+        "Mocking others",
+        "Spreading gossip"
+      ],
+      c: 1,
+      e: "Keeping promises is an important part of good character."
+    }
+
+  ];
+
+
+  /* =========================
+     DAILY QUESTION SELECTION
+  ========================= */
+
+  function getTodayKey() {
+
+    const today = new Date();
+
+    return today.getFullYear() + "-" +
+           String(today.getMonth() + 1).padStart(2, "0") + "-" +
+           String(today.getDate()).padStart(2, "0");
+
+  }
+
+
+  function seededRandom(seed) {
+
+    let x = Math.sin(seed) * 10000;
+
+    return x - Math.floor(x);
+
+  }
+
+
+  function getDailyQuestions() {
+
+    const today = getTodayKey();
+
+    const numbers = today
+      .split("-")
+      .join("");
+
+    let seed = Number(numbers);
+
+    let questions = [...questionBank];
+
+    for (let i = questions.length - 1; i > 0; i--) {
+
+      seed++;
+
+      const random = seededRandom(seed);
+
+      const j = Math.floor(random * (i + 1));
+
+      [questions[i], questions[j]] =
+      [questions[j], questions[i]];
+
+    }
+
+    return questions.slice(0, 5);
+
+  }
+
+
+  /* =========================
+     QUIZ VARIABLES
+  ========================= */
+
+  let dailyQuestions = getDailyQuestions();
+
+  let currentQuestion = 0;
+
+  let score = 0;
+
+
+  /* =========================
+     LOAD QUESTION
+  ========================= */
+
+  function loadQuestion() {
+
+    const question = dailyQuestions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+      "Question " + (currentQuestion + 1) + " of " + dailyQuestions.length;
+
+    document.getElementById("scoreText").textContent =
+      "Score: " + score;
+
+    document.getElementById("progress").style.width =
+      ((currentQuestion) / dailyQuestions.length * 100) + "%";
+
+    document.getElementById("question").textContent =
+      question.q;
+
+    const answers = document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+    document.getElementById("feedback").style.display = "none";
+
+    document.getElementById("feedback").innerHTML = "";
+
+    document.getElementById("nextBtn").style.display = "none";
+
+
+    question.a.forEach((answer, index) => {
+
+      const button = document.createElement("button");
+
+      button.className = "answer";
+
+      button.textContent = answer;
+
+      button.onclick = function() {
+
+        checkAnswer(index, button);
+
+      };
+
+      answers.appendChild(button);
+
+    });
+
+  }
+
+
+  /* =========================
+     CHECK ANSWER
+  ========================= */
+
+  function checkAnswer(selected, selectedButton) {
+
+    const question = dailyQuestions[currentQuestion];
+
+    const buttons =
+      document.querySelectorAll(".answer");
+
+    buttons.forEach(button => {
+
+      button.disabled = true;
+
+    });
+
+
+    if (selected === question.c) {
+
+      selectedButton.classList.add("correct");
+
+      score++;
+
+      document.getElementById("feedback").innerHTML =
+        "✅ <strong>Correct!</strong><br>" +
+        question.e;
+
+    } else {
+
+      selectedButton.classList.add("wrong");
+
+      buttons[question.c].classList.add("correct");
+
+      document.getElementById("feedback").innerHTML =
+        "❌ <strong>Not quite.</strong><br>" +
+        question.e;
+
+    }
+
+
+    document.getElementById("feedback").style.display =
+      "block";
+
+    document.getElementById("scoreText").textContent =
+      "Score: " + score;
+
+
+    document.getElementById("nextBtn").style.display =
+      "block";
+
+  }
+
+
+  /* =========================
+     NEXT QUESTION
+  ========================= */
+
+  function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion >= dailyQuestions.length) {
+
+      finishChallenge();
+
+      return;
+
+    }
+
+    loadQuestion();
+
+  }
+
+
+  /* =========================
+     FINISH CHALLENGE
+  ========================= */
+
+  function finishChallenge() {
+
+    document.getElementById("quizCard").style.display =
+      "none";
+
+    document.getElementById("resultCard").style.display =
+      "block";
+
+
+    document.getElementById("finalScore").textContent =
+      score + " / " + dailyQuestions.length;
+
+
+    let message = "";
+
+    if (score === 5) {
+
+      message =
+        "🌟 Excellent! You got everything correct. Keep learning!";
+
+    } else if (score >= 3) {
+
+      message =
+        "👏 Good job! Keep learning and improving.";
+
+    } else {
+
+      message =
+        "📚 Keep going. Every challenge is an opportunity to learn.";
+
+    }
+
+
+    document.getElementById("resultMessage").textContent =
+      message;
+
+
+    updateStreak();
+
+  }
+
+
+  /* =========================
+     DAILY STREAK
+  ========================= */
+
+  function updateStreak() {
+
+    const today = getTodayKey();
+
+    const lastDate =
+      localStorage.getItem("darkStainChallengeLast");
+
+    let streak =
+      Number(localStorage.getItem("darkStainChallengeStreak")) || 0;
+
+
+    if (lastDate === today) {
+
+      // Already completed today's challenge.
+
+    } else {
+
+      if (lastDate) {
+
+        const previous =
+          new Date(lastDate + "T00:00:00");
+
+        const current =
+          new Date(today + "T00:00:00");
+
+        const difference =
+          Math.round(
+            (current - previous) /
+            (1000 * 60 * 60 * 24)
+          );
+
+        if (difference === 1) {
+
+          streak++;
+
+        } else {
+
+          streak = 1;
+
+        }
+
+      } else {
+
+        streak = 1;
+
+      }
+
+
+      localStorage.setItem(
+        "darkStainChallengeStreak",
+        streak
+      );
+
+      localStorage.setItem(
+        "darkStainChallengeLast",
+        today
+      );
+
+    }
+
+
+    document.getElementById("streakText").textContent =
+      "🔥 Streak: " + streak + " day" +
+      (streak === 1 ? "" : "s");
+
+  }
+
+
+  /* =========================
+     TRY AGAIN
+  ========================= */
+
+  function restartChallenge() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    dailyQuestions = getDailyQuestions();
+
+
+    document.getElementById("quizCard").style.display =
+      "block";
+
+    document.getElementById("resultCard").style.display =
+      "none";
+
+
+    loadQuestion();
+
+  }
+
+
+  /* =========================
+     START
+  ========================= */
+
+  loadQuestion();
+
+</script>
+
+</body>
+</html>
