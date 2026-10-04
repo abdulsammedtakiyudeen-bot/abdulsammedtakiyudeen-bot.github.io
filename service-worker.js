@@ -1,4 +1,4 @@
-const CACHE_NAME='dark-stain-v4';
+const CACHE_NAME='dark-stain-v5';
 const FILES=['./','./index.html','./manifest.json','./cover.png','./icon-192.png','./icon-512.png','./The_Dark_Stain_on_Todays_Society_Laymans_Language.pdf'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(FILES)).catch(()=>{}));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))));self.clients.claim()});
